@@ -1,14 +1,13 @@
 module.exports = function solveEquation(equation) {
-  var arr = equation.split(' ');
-  var result = [];
+  const arr = equation.split(" ");
+  const result = [];
+  const a = +arr[0];
+  const b = arr[3] === "-" ? -+arr[4] : +arr[4];
+  const c = arr[7] === "-" ? -+arr[8] : +arr[8];
+  const discriminant = Math.pow(b, 2) - 4 * a * c;
 
-  var a = +arr[0];
-  var b = arr[3] === '-' ? -+arr[4] : +arr[4];
-  var c = arr[7] === '-' ? -+arr[8] : +arr[8];
-  var discriminant = Math.pow(b,2)-4*a*c;
-  result.push(Math.round((-b-Math.sqrt(discriminant))/(2*a)));
-  result.push(Math.round((-b+Math.sqrt(discriminant))/(2*a)));
-  return result.sort(function(a,b){
-    return a-b;
-  });
-}
+  result.push(Math.round((-b - Math.sqrt(discriminant)) / (2 * a)));
+  result.push(Math.round((-b + Math.sqrt(discriminant)) / (2 * a)));
+
+  return result.sort((a, b) => a - b);
+};
